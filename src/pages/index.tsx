@@ -1,7 +1,11 @@
+import Layout from "@/components/Layout";
+
 const index = () => {
   return (
     <>
-      <div className="">Hello</div>
+      <Layout>
+        <div className=""></div>
+      </Layout>
     </>
   );
 };
