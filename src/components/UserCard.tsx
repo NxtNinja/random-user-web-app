@@ -4,36 +4,40 @@ import {
   CardHeader,
   CardBody,
   CardFooter,
-  Divider,
   Avatar,
   Button,
 } from "@nextui-org/react";
+import { User } from "@/utils/types/UserType";
 
-export default function UserCard() {
+type UserProp = {
+  prop: User;
+};
+
+export default function UserCard({ prop }: UserProp) {
   return (
     <Card
       className="max-w-[400px] border border-slate-50/20"
       radius="none"
       shadow="none"
     >
-      <CardHeader className="flex flex-col gap-3 justify-center">
-        <Avatar
-          src="https://i.pravatar.cc/150?u=a04258114e29026708c"
-          className="w-20 h-20 text-large"
-        />
-        <div className="text-center">
-          <p className="text-xl font-bold">ABC XYZ</p>
-          <p className="text-base font-bold">abc@gmail.com</p>
-        </div>
+      <CardHeader className="flex flex-col gap-3 justify-center p-4">
+        <Avatar src={prop.picture.large} className="w-20 h-20 text-large" />
       </CardHeader>
       <CardBody className="text-justify space-y-3">
-        <p className="text-sm lg:text-base line-clamp-3 lg:line-clamp-none">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum aliquam
-          laudantium nostrum, pariatur rem distinctio!
-        </p>
+        <div className="text-center">
+          <p className="md:text-xl text-base font-bold">
+            {prop.name.title} {prop.name.first} {prop.name.last}
+          </p>
+          <p className="text-sm">
+            Lorem ipsum, dolor sit amet consectetur adipisicing elit. Sit,
+            porro?
+          </p>
+        </div>
       </CardBody>
       <CardFooter>
-        <Button color="primary">Details</Button>
+        <Button size="lg" radius="sm" color="primary" className="w-full">
+          View Profile
+        </Button>
       </CardFooter>
     </Card>
   );
